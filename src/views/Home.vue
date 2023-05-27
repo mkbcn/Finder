@@ -47,7 +47,7 @@
 <script>
 import previewCard from "@/components/previewCard.vue";
 import axios from "axios";
-const apiKey = "AIzaSyDl8Qwntp0DTzBVnGhHVJPnr5HSIkop_xU";
+const apiKey = "Insert your youtube API";
 const apiURL = "https://www.googleapis.com/youtube/v3/search";
 
 export default {
