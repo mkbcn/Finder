@@ -5,8 +5,14 @@ export default {
     title:null,
     date:null,
     channel:null,
-    thumb:null
+    thumb:null,
+  },
+  methods:{
+    buttonAction(){
+      this.$emit('trigger');
+    }
   }
+
 }
 </script>
 
@@ -31,6 +37,7 @@ export default {
       </v-card-subtitle>
 
       <v-btn
+        @click="buttonAction"
         color="orange-lighten-2"
         variant="flat"
         class="ma-4"

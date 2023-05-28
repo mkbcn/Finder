@@ -34,20 +34,58 @@
           <v-sheet class="ma-2 pa-2">
             <previewCard :title="n.snippet.title"
                          :date="n.snippet.publishTime"
-                         :channel="n.snippet.channelTitle" :thumb="n.snippet.thumbnails.high.url">
+                         :channel="n.snippet.channelTitle"
+                         :thumb="n.snippet.thumbnails.high.url"
+                         @trigger="playVideo(n.id.videoId)"
+            >
 
             </previewCard>
           </v-sheet>
         </v-col>
       </v-row>
     </v-container>
+
+      <v-row justify="center" >
+        <v-dialog
+
+          v-model="dialog"
+          persistent
+          width="80%"
+        >
+          <v-card>
+            <v-card-title class="mt-1 ml-2">
+              <span class="text-h5">YouTube</span>
+            </v-card-title>
+
+
+            <div ref="playTag"></div>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn
+                class="mr-2"
+                size="small"
+                color="orange"
+                variant="flat"
+                @click="dialog = false"
+              >
+                Close
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-row>
+
   </div>
 </template>
 
 <script>
 import previewCard from "@/components/previewCard.vue";
 import axios from "axios";
-const apiKey = "AIzaSyDl8Qwntp0DTzBVnGhHVJPnr5HSIkop_xU";
+import YouTubePlayer from "youtube-player";
+
+const apiKey = "AIzaSyBRSfc-4LqvoaW496PITw1RdGg8IUSTEYs";
 const apiURL = "https://www.googleapis.com/youtube/v3/search";
 
 export default {
@@ -55,7 +93,9 @@ export default {
   data(){
     return{
       search_text:null,
-      search_result: []
+      search_result: [],
+      dialog:false,
+      player:null
     };
   },
 
@@ -68,7 +108,22 @@ export default {
       });
       this.search_result = response.data.items;
       console.log(this.search_result);
+    },
+
+    playVideo(videoId){
+      this.dialog = true;
+      setTimeout(()=>{
+        this.player = YouTubePlayer(this.$refs.playTag,{
+          videoId:videoId,
+          width:"100%",
+          height:"1024",
+          playerVars:{
+            autoplay:true
+          }
+        },0);
+      });
     }
+
   }
 
 }
