@@ -85,7 +85,7 @@ import previewCard from "@/components/previewCard.vue";
 import axios from "axios";
 import YouTubePlayer from "youtube-player";
 
-const apiKey = "AIzaSyBRSfc-4LqvoaW496PITw1RdGg8IUSTEYs";
+const apiKey = "Insert your youtube API";
 const apiURL = "https://www.googleapis.com/youtube/v3/search";
 
 export default {
