@@ -83,8 +83,11 @@
 <script>
 import previewCard from "@/components/previewCard.vue";
 import axios from "axios";
+<<<<<<< HEAD
 import YouTubePlayer from "youtube-player";
 
+=======
+>>>>>>> 70b4b1dd8a7a0a94feca9eb941b2d4027e0c20bc
 const apiKey = "Insert your youtube API";
 const apiURL = "https://www.googleapis.com/youtube/v3/search";
 
