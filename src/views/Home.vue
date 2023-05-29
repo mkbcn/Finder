@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div >
+    <Titles title="Videos"/>
     <v-responsive
     class="mx-auto mb-5 text-center"
     max-width="500"
@@ -14,8 +15,9 @@
       ></v-text-field>
 
       <v-btn
-        prepend-icon="mdi mdi-multimedia"
-        append-icon="mdi mdi-multimedia"
+        prepend-icon=""
+        append-icon=""
+        color="green-darken-1"
         variant="tonal"
         @click="youtubeDataApi"
       >
@@ -84,12 +86,14 @@
 import previewCard from "@/components/previewCard.vue";
 import axios from "axios";
 import YouTubePlayer from "youtube-player";
+import Titles from "@/components/Titles.vue";
 
+//Insert your youtube API
 const apiKey = "Insert your youtube API";
 const apiURL = "https://www.googleapis.com/youtube/v3/search";
 
 export default {
-  components:{previewCard},
+  components:{Titles, previewCard},
   data(){
     return{
       search_text:null,
@@ -120,7 +124,7 @@ export default {
           playerVars:{
             autoplay:true
           }
-        },0);
+        },1000);
       });
     }
 
