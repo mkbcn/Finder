@@ -14,6 +14,7 @@ export default {
   methods:{
     async callNumberAPI(){
        const respond = await axios.get(apiURL+this.number+'/'+this.type);
+       console.log(respond);
        this.items.push(
          {
            color: 'info',
@@ -56,7 +57,7 @@ export default {
           <v-btn @click="callNumberAPI">Try this</v-btn>
         </v-row>
       </v-col>
-      <v-col cols="12" sm="6" style="overflow-y: auto; height: 500px">
+      <v-col cols="12" sm="6" style="overflow-y: auto; height: 400px">
         <v-timeline side="end">
           <v-timeline-item
             v-for="item in items"
