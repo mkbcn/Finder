@@ -2,7 +2,7 @@
 import Titles from "@/components/Titles.vue";
 import axios from "axios";
 
-const apiURL = "http://numbersapi.com/"
+const apiURL = import.meta.env.VITE_APP_NUMBERS_API_URL;
 export default {
   name:"Numbers",
   components: {Titles},

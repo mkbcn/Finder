@@ -3,7 +3,7 @@ import Titles from "@/components/Titles.vue";
 import axios from "axios";
 import NewsSheet from "@/components/NewsSheet.vue";
 
-const apiURL = "https://inshorts.deta.dev/news?category=";
+const apiURL = import.meta.env.VITE_APP_NEWS_API_URL;
 
 export default {
   name:"News",
