@@ -1,98 +1,15 @@
-<template>
-  <div >
-    <Titles title="Videos"/>
-    <v-responsive
-    class="mx-auto mb-5 text-center"
-    max-width="500"
-    >
-      <v-text-field
-      class="mt-3"
-      clearable
-      label="What would you like to watch?"
-      prepend-icon="mdi mdi-multimedia"
-      variant="outlined"
-      v-model="search_text"
-      ></v-text-field>
-
-      <v-btn
-        prepend-icon=""
-        append-icon=""
-        color="green-darken-1"
-        variant="tonal"
-        @click="youtubeDataApi"
-      >
-        Explore
-      </v-btn>
-    </v-responsive>
-
-    <v-container class="">
-      <v-row no-gutters>
-        <v-col
-          v-for="n in search_result"
-          :key="n"
-          cols="12"
-          sm="4"
-        >
-          <v-sheet class="ma-2 pa-2">
-            <previewCard :title="n.snippet.title"
-                         :date="n.snippet.publishTime"
-                         :channel="n.snippet.channelTitle"
-                         :thumb="n.snippet.thumbnails.high.url"
-                         @trigger="playVideo(n.id.videoId)"
-            >
-
-            </previewCard>
-          </v-sheet>
-        </v-col>
-      </v-row>
-    </v-container>
-
-      <v-row justify="center" >
-        <v-dialog
-
-          v-model="dialog"
-          persistent
-          width="80%"
-        >
-          <v-card>
-            <v-card-title class="mt-1 ml-2">
-              <span class="text-h5">YouTube</span>
-            </v-card-title>
-
-
-            <div ref="playTag"></div>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-
-              <v-btn
-                class="mr-2"
-                size="small"
-                color="orange"
-                variant="flat"
-                @click="dialog = false"
-              >
-                Close
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-      </v-row>
-
-  </div>
-</template>
-
 <script>
 import previewCard from "@/components/previewCard.vue";
 import axios from "axios";
 import YouTubePlayer from "youtube-player";
 import Titles from "@/components/Titles.vue";
 
-//Insert your youtube API
+//Insert your API
 const apiKey = "Insert your youtube API";
 const apiURL = "https://www.googleapis.com/youtube/v3/search";
 
 export default {
+  name:'Home',
   components:{Titles, previewCard},
   data(){
     return{
@@ -133,3 +50,89 @@ export default {
 }
 
 </script>
+
+
+
+<template>
+  <div >
+    <Titles title="Videos"/>
+    <v-responsive
+      class="mx-auto mb-5 text-center"
+      max-width="500"
+    >
+      <v-text-field
+        class="mt-3"
+        clearable
+        label="What would you like to watch?"
+        prepend-icon="mdi mdi-multimedia"
+        variant="outlined"
+        v-model="search_text"
+      ></v-text-field>
+
+      <v-btn
+        prepend-icon=""
+        append-icon=""
+        color="green-darken-1"
+        variant="tonal"
+        @click="youtubeDataApi"
+      >
+        Explore
+      </v-btn>
+    </v-responsive>
+
+    <v-container class="">
+      <v-row no-gutters>
+        <v-col
+          v-for="n in search_result"
+          :key="n"
+          cols="12"
+          sm="4"
+        >
+          <v-sheet class="ma-2 pa-2">
+            <previewCard :title="n.snippet.title"
+                         :date="n.snippet.publishTime"
+                         :channel="n.snippet.channelTitle"
+                         :thumb="n.snippet.thumbnails.high.url"
+                         @trigger="playVideo(n.id.videoId)"
+            >
+
+            </previewCard>
+          </v-sheet>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-row justify="center" >
+      <v-dialog
+
+        v-model="dialog"
+        persistent
+        width="80%"
+      >
+        <v-card>
+          <v-card-title class="mt-1 ml-2">
+            <span class="text-h5">YouTube</span>
+          </v-card-title>
+
+
+          <div ref="playTag"></div>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <v-btn
+              class="mr-2"
+              size="small"
+              color="orange"
+              variant="flat"
+              @click="dialog = false"
+            >
+              Close
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
+
+  </div>
+</template>

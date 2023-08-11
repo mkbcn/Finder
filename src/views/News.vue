@@ -4,18 +4,18 @@ import axios from "axios";
 import NewsSheet from "@/components/NewsSheet.vue";
 
 const apiURL = import.meta.env.VITE_APP_NEWS_API_URL;
+const apiKEY = import.meta.env.VITE_APP_NEWS_API_KEY;
 
 export default {
   name:"News",
   components: {NewsSheet, Titles},
   data: () => ({
     items:[
-      'all','business','sports','world','politics',
-      'technology','startup','entertainment','miscellaneous',
-      'science','automobile'
+      'all','business','sports','entertainment','health',
+      'technology','science'
     ],
     val:null,
-    category:"all",
+    category:"general",
     result:[]
   }),
   mounted() {
@@ -23,23 +23,20 @@ export default {
   },
   methods:{
     test(val){
-      val==1 ? this.category="business" : this.category="all";
+      val==1 ? this.category="business" : this.category="general";
       val==2 ? this.category="sports" : null;
-      val==3 ? this.category="world" : null;
-      val==4 ? this.category="politics" : null;
+      val==3 ? this.category="entertainment" : null;
+      val==4 ? this.category="health" : null;
       val==5 ? this.category="technology" : null;
-      val==6 ? this.category="startup" : null;
-      val==7 ? this.category="entertainment" : null;
-      val==8 ? this.category="miscellaneous" : null;
-      val==9 ? this.category="science" : null;
-      val==10 ? this.category="automobile" : null;
+      val==6 ? this.category="science" : null;
       this.callNewsAPI()
     },
 
     async callNewsAPI(){
-      const respond = await axios.get(apiURL+this.category);
-      this.result = respond.data.data;
+      const respond = await axios.get(apiURL+this.category+apiKEY);
+      this.result = respond.data.articles;
       //console.log(this.result);
+      console.log(respond.data.articles);
     }
 
   }
@@ -49,7 +46,7 @@ export default {
 
 <template>
 
-    <Titles title="Inshorts News API"/>
+    <Titles title="News API"/>
     <v-sheet elevation="6" class="mb-2">
       <v-tabs
 
@@ -85,10 +82,10 @@ export default {
               max-width="1000"
             >
               <NewsSheet :title="n.title"
-                         :date="n.date"
+                         :date="n.publishedAt"
                          :content="n.content"
-                         :image-url="n.imageUrl"
-                         :read-more-url="n.readMoreUrl">
+                         :image-url="n.urlToImage"
+                         :read-more-url="n.url">
 
               </NewsSheet>
             </v-sheet>
