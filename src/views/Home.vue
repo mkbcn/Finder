@@ -5,7 +5,7 @@ import YouTubePlayer from "youtube-player";
 import Titles from "@/components/Titles.vue";
 
 //Insert your API
-const apiKey = "Insert your youtube API";
+const apiKey = import.meta.env.VITE_APP_YOUTUBE_API_KEY;
 const apiURL = "https://www.googleapis.com/youtube/v3/search";
 
 export default {
