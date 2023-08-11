@@ -33,7 +33,7 @@ export default {
     },
 
     async callNewsAPI(){
-      const respond = await axios.get(apiURL+this.category+apiKEY);
+      const respond = await axios.get(apiURL+this.category+"&apiKey="+apiKEY);
       this.result = respond.data.articles;
       //console.log(this.result);
       console.log(respond.data.articles);
