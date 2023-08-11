@@ -1,9 +1,9 @@
 ## Preview
 
-<img src="src/assets/Screenshot 2023-08-11 180845.png" width="50%">
-<img src="src/assets/Screenshot 2023-08-11 181005.png" width="50%">
-<img src="src/assets/Screenshot 2023-08-11 175225.png" width="50%">
-<img src="src/assets/Screenshot 2023-08-11 175537.png" width="50%">
+<img src="src/assets/Screenshot 2023-08-11 180845.png" width="60%">
+<img src="src/assets/Screenshot 2023-08-11 181005.png" width="60%">
+<img src="src/assets/Screenshot 2023-08-11 175225.png" width="60%">
+<img src="src/assets/Screenshot 2023-08-11 175537.png" width="60%">
 
 
 # base
