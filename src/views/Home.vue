@@ -55,7 +55,7 @@ export default {
 
 <template>
   <div >
-    <Titles title="Videos"/>
+    <Titles title=""/>
     <v-responsive
       class="mx-auto mb-5 text-center"
       max-width="500"
@@ -63,7 +63,7 @@ export default {
       <v-text-field
         class="mt-3"
         clearable
-        label="What would you like to watch?"
+        label="Search Episodes"
         prepend-icon="mdi mdi-multimedia"
         variant="outlined"
         v-model="search_text"
